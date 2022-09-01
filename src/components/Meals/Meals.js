@@ -1,11 +1,11 @@
 import React from "react";
 import AvailableMeals from "./AvailableMeals";
 import MealsSummary from "./MealsSummary";
-const Meals = () => {
+const Meals = ({ onOrderMeal }) => {
   return (
     <React.Fragment>
       <MealsSummary />
-      <AvailableMeals />
+      <AvailableMeals onOrderMeal={onOrderMeal} />
     </React.Fragment>
   );
 };

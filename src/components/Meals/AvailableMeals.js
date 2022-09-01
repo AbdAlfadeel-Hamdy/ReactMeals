@@ -28,9 +28,9 @@ const DUMMY_MEALS = [
     price: 18.99,
   },
 ];
-const AvailableMeals = () => {
+const AvailableMeals = ({ onOrderMeal }) => {
   const mealsList = DUMMY_MEALS.map((meal) => {
-    return <MealItem key={meal.id} meal={meal} />;
+    return <MealItem key={meal.id} meal={meal} onOrderMeal={onOrderMeal} />;
   });
   return (
     <Card className={styles.meals}>

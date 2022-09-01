@@ -1,6 +1,6 @@
 import styles from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
-const MealItem = ({ meal }) => {
+const MealItem = ({ meal, onOrderMeal }) => {
   return (
     <li className={styles.meal}>
       <div>
@@ -8,7 +8,7 @@ const MealItem = ({ meal }) => {
         <div className={styles.description}>{meal.description}</div>
         <div className={styles.price}>{meal.price}</div>
       </div>
-      <MealItemForm />
+      <MealItemForm meal={meal} onOrderMeal={onOrderMeal} />
     </li>
   );
 };

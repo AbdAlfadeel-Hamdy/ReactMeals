@@ -2,14 +2,17 @@ import styles from "./Cart.module.css";
 import CartItem from "./CartItem";
 import modalContext from "../../store/modalContext";
 import { useContext } from "react";
-const Cart = ({ onCloseModal }) => {
+const Cart = ({ orderedMeals, total, onOrderChange }) => {
   const modalCtx = useContext(modalContext);
+  const cartItems = orderedMeals.map((meal) => {
+    return <CartItem key={meal.id} meal={meal} onOrderChange={onOrderChange} />;
+  });
   return (
     <div className={styles["cart-items"]} onClick={(e) => e.stopPropagation()}>
-      <CartItem />
+      {cartItems}
       <div className={styles.total}>
         <h3>Total Amount</h3>
-        <div>2000</div>
+        <div>${total}</div>
       </div>
       <div className={styles.actions}>
         <button
