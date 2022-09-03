@@ -2,8 +2,8 @@ import styles from "./MealItemForm.module.css";
 import Input from "../../UI/Input/Input";
 import { useState } from "react";
 const MealItemForm = ({ meal, onOrderMeal }) => {
-  const [amount, setAmount] = useState(0);
-  const onChangeHandler = (e) => {
+  const [amount, setAmount] = useState(1);
+  const inputChangeHandler = (e) => {
     setAmount(e.target.value);
   };
   const orderMealHandler = (e) => {
@@ -18,12 +18,19 @@ const MealItemForm = ({ meal, onOrderMeal }) => {
   return (
     <form className={styles.form}>
       <Input
-        title="Amout"
-        type="number"
-        value={amount}
-        onChange={onChangeHandler}
+        inputConfig={{
+          id: meal.id,
+          label: "Amount",
+          type: "number",
+          min: "1",
+          max: "10",
+          step: "1",
+          defaultValue: "1",
+          value: amount,
+          onChange: inputChangeHandler,
+        }}
       />
-      <button onClick={orderMealHandler}>+Add</button>
+      <button onClick={orderMealHandler}>+ Add</button>
     </form>
   );
 };

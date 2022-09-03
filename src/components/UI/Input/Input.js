@@ -1,9 +1,9 @@
 import styles from "./Input.module.css";
-const Input = ({ title, type, value, onChange }) => {
+const Input = ({ inputConfig }) => {
   return (
     <div className={styles.input}>
-      <label>{title}</label>
-      <input value={value} type={type} onChange={onChange} />
+      <label htmlFor={inputConfig.id}>{inputConfig.label}</label>
+      <input {...inputConfig} />
     </div>
   );
 };

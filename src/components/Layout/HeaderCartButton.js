@@ -9,9 +9,9 @@ const HeaderCartButton = ({ totalItems }) => {
       className={`${styles.button} ${styles.bump}`}
       onClick={modalCtx.openModalHandler}
     >
-      <div className={styles.icon}>
+      <span className={styles.icon}>
         <ion-icon name="cart"></ion-icon>
-      </div>
+      </span>
       <span>Your Cart</span>
       <span className={styles.badge}>{totalItems}</span>
     </button>

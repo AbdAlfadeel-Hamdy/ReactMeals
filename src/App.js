@@ -9,8 +9,8 @@ function App() {
   const [orderedMeals, setOrderedMeals] = useState([]);
   const [total, setTotal] = useState(0);
   const [totalItems, setTotalItems] = useState(0);
-  const openModalHandler = () => setModal((prevState) => !prevState);
-  const closeModalHandler = () => setModal((prevState) => !prevState);
+  const openModalHandler = () => setModal(true);
+  const closeModalHandler = () => setModal(false);
 
   useEffect(() => {
     setTotal(
@@ -24,7 +24,7 @@ function App() {
     );
   }, [orderedMeals]);
   const orderMealHandler = (meal) => {
-    if (meal.amount <= 0) return;
+    if (meal.amount < 0) return;
     setOrderedMeals((prevOrders) => {
       const index = prevOrders.findIndex((order) => order.name === meal.name);
       if (index === -1) return [meal, ...prevOrders];
@@ -58,7 +58,9 @@ function App() {
         </Modal>
       )}
       <Header totalItems={totalItems} />
-      <Meals onOrderMeal={orderMealHandler} />
+      <main>
+        <Meals onOrderMeal={orderMealHandler} />
+      </main>
     </modalContext.Provider>
   );
 }

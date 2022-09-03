@@ -11,8 +11,8 @@ const Cart = ({ orderedMeals, total, onOrderChange }) => {
     <div className={styles["cart-items"]} onClick={(e) => e.stopPropagation()}>
       {cartItems}
       <div className={styles.total}>
-        <h3>Total Amount</h3>
-        <div>${total}</div>
+        <span>Total Amount</span>
+        <span>${total}</span>
       </div>
       <div className={styles.actions}>
         <button
