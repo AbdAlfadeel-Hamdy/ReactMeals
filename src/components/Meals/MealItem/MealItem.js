@@ -1,6 +1,6 @@
 import styles from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
-const MealItem = ({ meal, onOrderMeal }) => {
+const MealItem = ({ meal }) => {
   const price = new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
@@ -12,7 +12,7 @@ const MealItem = ({ meal, onOrderMeal }) => {
         <div className={styles.description}>{meal.description}</div>
         <div className={styles.price}>{price}</div>
       </div>
-      <MealItemForm meal={meal} onOrderMeal={onOrderMeal} />
+      <MealItemForm meal={meal} />
     </li>
   );
 };

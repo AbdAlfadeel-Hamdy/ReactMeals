@@ -49,19 +49,25 @@ function App() {
     <modalContext.Provider
       value={{ modal, openModalHandler, closeModalHandler }}
     >
-      {modal && (
-        <Modal>
-          <cartContext.Provider
-            value={{ orderedMeals, total, changeOrderedMealsHandler }}
-          >
+      <cartContext.Provider
+        value={{
+          orderedMeals,
+          total,
+          totalItems,
+          orderMealHandler,
+          changeOrderedMealsHandler,
+        }}
+      >
+        {modal && (
+          <Modal>
             <Cart />
-          </cartContext.Provider>
-        </Modal>
-      )}
-      <Header totalItems={totalItems} />
-      <main>
-        <Meals onOrderMeal={orderMealHandler} />
-      </main>
+          </Modal>
+        )}
+        <Header />
+        <main>
+          <Meals />
+        </main>
+      </cartContext.Provider>
     </modalContext.Provider>
   );
 }

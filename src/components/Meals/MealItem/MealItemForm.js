@@ -1,14 +1,16 @@
 import styles from "./MealItemForm.module.css";
 import Input from "../../UI/Input/Input";
-import { useState } from "react";
-const MealItemForm = ({ meal, onOrderMeal }) => {
+import { useContext, useState } from "react";
+import cartContext from "../../../store/cartContext";
+const MealItemForm = ({ meal }) => {
   const [amount, setAmount] = useState(1);
+  const cartCtx = useContext(cartContext);
   const inputChangeHandler = (e) => {
     setAmount(e.target.value);
   };
-  const orderMealHandler = (e) => {
+  const orderMeal = (e) => {
     e.preventDefault();
-    onOrderMeal({
+    cartCtx.orderMealHandler({
       id: meal.id,
       name: meal.name,
       price: meal.price,
@@ -30,7 +32,7 @@ const MealItemForm = ({ meal, onOrderMeal }) => {
           onChange: inputChangeHandler,
         }}
       />
-      <button onClick={orderMealHandler}>+ Add</button>
+      <button onClick={orderMeal}>+ Add</button>
     </form>
   );
 };

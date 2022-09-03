@@ -1,8 +1,10 @@
 import styles from "./HeaderCartButton.module.css";
 import modalContext from "../../store/modalContext";
 import { useContext } from "react";
-const HeaderCartButton = ({ totalItems }) => {
+import cartContext from "../../store/cartContext";
+const HeaderCartButton = () => {
   const modalCtx = useContext(modalContext);
+  const cartCtx = useContext(cartContext);
 
   return (
     <button
@@ -13,7 +15,7 @@ const HeaderCartButton = ({ totalItems }) => {
         <ion-icon name="cart"></ion-icon>
       </span>
       <span>Your Cart</span>
-      <span className={styles.badge}>{totalItems}</span>
+      <span className={styles.badge}>{cartCtx.totalItems}</span>
     </button>
   );
 };
