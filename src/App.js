@@ -4,6 +4,7 @@ import Header from "./components/Layout/Header";
 import Meals from "./components/Meals/Meals";
 import Modal from "./components/UI/Modal/Modal";
 import modalContext from "./store/modalContext";
+import cartContext from "./store/cartContext";
 function App() {
   const [modal, setModal] = useState(false);
   const [orderedMeals, setOrderedMeals] = useState([]);
@@ -50,11 +51,11 @@ function App() {
     >
       {modal && (
         <Modal>
-          <Cart
-            orderedMeals={orderedMeals}
-            total={total}
-            onOrderChange={changeOrderedMealsHandler}
-          />
+          <cartContext.Provider
+            value={{ orderedMeals, total, changeOrderedMealsHandler }}
+          >
+            <Cart />
+          </cartContext.Provider>
         </Modal>
       )}
       <Header totalItems={totalItems} />

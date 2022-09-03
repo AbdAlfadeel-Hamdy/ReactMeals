@@ -1,7 +1,10 @@
 import styles from "./MealItem.module.css";
 import MealItemForm from "./MealItemForm";
 const MealItem = ({ meal, onOrderMeal }) => {
-  const price = `$${meal.price.toFixed(2)}`;
+  const price = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+  }).format(meal.price);
   return (
     <li className={styles.meal}>
       <div>
