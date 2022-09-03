@@ -24,6 +24,7 @@ function App() {
       orderedMeals.reduce((acc, curMeal) => acc + curMeal.amount, 0)
     );
   }, [orderedMeals]);
+
   const orderMealHandler = (meal) => {
     if (meal.amount < 0) return;
     setOrderedMeals((prevOrders) => {
